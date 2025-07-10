@@ -1,11 +1,11 @@
-interface IProps {
+import { type FC, type HTMLProps } from 'react';
+
+interface IProps extends Omit<HTMLProps<HTMLImageElement>, 'src'> {
   imageURL: string;
-  alt: string;
-  className: string;
 }
 
-const Image = ({ imageURL, alt, className }: IProps) => {
-  return <img src={imageURL} alt={alt} className={className} />;
+const Image: FC<IProps> = ({ imageURL, ...props }) => {
+  return <img src={imageURL} {...props} />;
 };
 
 export default Image;
